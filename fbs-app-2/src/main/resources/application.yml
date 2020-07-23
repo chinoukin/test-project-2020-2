@@ -1,0 +1,31 @@
+server:
+  port: 2003
+
+spring:
+  application:
+    name: fbs-app-2
+  datasource:
+    url: jdbc:mysql://192.168.29.128:3306/fbs-app-2?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: fbs-app-2-service-group
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:2001/eureka/ # 指向配置eureka地址
+  instance:
+    preferIpAddress: true # 使用ip地址注册，否则会由于机器没有配置域名发生找不到地址的错误
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} # 地址格式=ip:端口
+
+mybatis:
+  mapper-locations: classpath:mappings/*Mapper.xml
+  type-aliases-package: com.wisea.fbsapp2.entity
+
+feign:
+  hystrix:
+    enabled: true

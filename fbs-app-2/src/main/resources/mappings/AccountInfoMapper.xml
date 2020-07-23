@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wisea.fbsapp2.dao.AccountInfoDao">
+
+    <update id="updateAccountBalanceById" parameterType="com.wisea.fbsapp2.entity.AccountInfo">
+       update account_info set account_balance = account_balance + #{accountBalance}
+       where account_no = #{accountNo}
+    </update>
+
+</mapper>

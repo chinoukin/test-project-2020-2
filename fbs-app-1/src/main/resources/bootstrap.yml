@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    inetutils:
+      # use-only-site-local-interfaces: true
+      # preferred-networks: 192.168.20.* # 优先使用 192.168.20.*
+      ignoredInterfaces:
+        - .*VMnet.*
+      #  - .*VMware.*
+        - docker0
+        - .*Eth.*
+
