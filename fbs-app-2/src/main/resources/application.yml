@@ -26,6 +26,10 @@ mybatis:
   mapper-locations: classpath:mappings/*Mapper.xml
   type-aliases-package: com.wisea.fbsapp2.entity
 
+logging:
+  level:
+    com.wisea: DEBUG
+
 feign:
   hystrix:
     enabled: true
